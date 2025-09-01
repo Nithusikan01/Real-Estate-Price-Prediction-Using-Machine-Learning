@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Price Prediction</title>
+    <!--Link to external CSS file -->
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏠 Housing Price Predictor</h1>
+            <p>Get accurate property value estimates using machine learning</p>
+        </div>
+
+        <div id="apiStatus" class="api-status">
+            Checking API connection...
+        </div>
+
+        <form id="predictionForm">
+            <div class="form-group">
+                <div class="form-row">
+                    <div>
+                        <label for="area">Area (sq ft)</label>
+                        <input type="number" id="area" name="area" min="1000" max="20000" step="100" required>
+                        <div class="input-hint">Property area in square feet</div>
+                    </div>
+                    <div>
+                        <label for="bedrooms">Bedrooms</label>
+                        <select id="bedrooms" name="bedrooms" required>
+                            <option value="">Select bedrooms</option>
+                            <option value="1">1 Bedroom</option>
+                            <option value="2">2 Bedrooms</option>
+                            <option value="3">3 Bedrooms</option>
+                            <option value="4">4 Bedrooms</option>
+                            <option value="5">5 Bedrooms</option>
+                            <option value="6">6+ Bedrooms</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div>
+                        <label for="bathrooms">Bathrooms</label>
+                        <select id="bathrooms" name="bathrooms" required>
+                            <option value="">Select bathrooms</option>
+                            <option value="1">1 Bathroom</option>
+                            <option value="2">2 Bathrooms</option>
+                            <option value="3">3 Bathrooms</option>
+                            <option value="4">4+ Bathrooms</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="stories">Stories</label>
+                        <select id="stories" name="stories" required>
+                            <option value="">Select stories</option>
+                            <option value="1">1 Story</option>
+                            <option value="2">2 Stories</option>
+                            <option value="3">3 Stories</option>
+                            <option value="4">4+ Stories</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div>
+                        <label for="mainroad">Main Road Access</label>
+                        <select id="mainroad" name="mainroad" required>
+                            <option value="">Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="guestroom">Guest Room</label>
+                        <select id="guestroom" name="guestroom" required>
+                            <option value="">Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div>
+                        <label for="basement">Basement</label>
+                        <select id="basement" name="basement" required>
+                            <option value="">Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="hotwaterheating">Hot Water Heating</label>
+                        <select id="hotwaterheating" name="hotwaterheating" required>
+                            <option value="">Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div>
+                        <label for="airconditioning">Air Conditioning</label>
+                        <select id="airconditioning" name="airconditioning" required>
+                            <option value="">Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="parking">Parking Spaces</label>
+                        <select id="parking" name="parking" required>
+                            <option value="">Select parking</option>
+                            <option value="0">No Parking</option>
+                            <option value="1">1 Space</option>
+                            <option value="2">2 Spaces</option>
+                            <option value="3">3 Spaces</option>
+                            <option value="4">4+ Spaces</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div>
+                        <label for="prefarea">Preferred Area</label>
+                        <select id="prefarea" name="prefarea" required>
+                            <option value="">Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <div class="input-hint">Is it in a preferred neighborhood?</div>
+                    </div>
+                    <div>
+                        <label for="furnishingstatus">Furnishing Status</label>
+                        <select id="furnishingstatus" name="furnishingstatus" required>
+                            <option value="">Select status</option>
+                            <option value="furnished">Furnished</option>
+                            <option value="semi-furnished">Semi-Furnished</option>
+                            <option value="unfurnished">Unfurnished</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="predict-btn" id="predictBtn">
+                <span id="btnText">Get Price Prediction</span>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                </div>
+            </button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
